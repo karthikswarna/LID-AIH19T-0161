@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIH19T-0161</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row::after
+        {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        [class*="col-"]
+        {
+            float: left;
+            padding: 15px;
+            width: 100%;
+        }
+
+        html
+        {
+            font-family: "Lucida Sans", sans-serif;
+        }
+
+        .header
+        {
+            background-color: #9933cc;
+            color: #ffffff;
+            padding: 15px;
+        }
+
+        .flex-container
+        {
+            display: flex;
+            align-items: stretch;
+            background-color: #f1f1f1;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .flex-container #hindi
+        {
+            background-color: #ffcc99;
+            color: white;
+            width: 16.88%;
+            margin: 10px 2.7% 10px 2.77%;
+            text-align: center;
+            line-height: 75px;
+            font-size: large;
+        }
+
+        .flex-container #telugu
+        {
+            background-color: #cccc66;
+            color: white;
+            width: 16.88%;
+            margin: 10px 2.7% 10px 0px;
+            text-align: center;
+            line-height: 75px;
+            font-size: large;
+        }
+
+        .flex-container #tamil
+        {
+            background-color: #cc3399;
+            color: white;
+            width: 16.88%;
+            margin: 10px 2.7% 10px 0px;
+            text-align: center;
+            line-height: 75px;
+            font-size: large;
+        }
+
+        .flex-container #marathi
+        {
+            background-color: #ff99ff;
+            color: white;
+            width: 16.88%;
+            margin: 10px 2.7% 10px 0px;
+            text-align: center;
+            line-height: 75px;
+            font-size: large;
+        }
+
+        .flex-container #gujarati
+        {
+            background-color: #ccff33;
+            color: white;
+            width: 16.88%;
+            margin: 10px 2.7% 10px 0px;
+            text-align: center;
+            line-height: 75px;
+            font-size: large;
+        }
+
+        .menu ul
+        {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li
+        {
+            padding: 8px;
+            margin-bottom: 7px;
+            background-color: #33b5e5;
+            color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+
+        .button
+        {
+
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button2
+        {
+            background-color: #33b5e5;
+        }
+
+        .button2:hover
+        {
+            box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
+            background: #0ae;
+        }
+
+        #b_ody
+        {
+            text-align: center;
+        }
+
+        label
+        {
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 100;
+            border-radius: 8px;
+            padding: 30px;
+            /* Style as you please, it will become the visible UI component. */
+        }
+
+        #mark2
+        {
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        #mark2_2
+        {
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        .i_form
+        {
+            padding: 20px;
+            padding-left: 10%;
+        }
+
+        #recordButton
+        {
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: #33b5e5;
+        }
+
+
+        #recordButton_2
+        {
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: #33b5e5;
+        }
+
+	
+
+        #stopButton_2
+        {
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: #33b5e5;
+        }
+	#pauseButton{
+  border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: #33b5e5;
+
+
+
+
+
+
+	
+
+
+	}
+
+        #mark
+        {
+            text-align: center;
+        }
+
+        #controls
+        {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        @media only screen and (min-width: 600px)
+        {
+            .col-s-1 { width: 8.33%; }
+            .col-s-2 { width: 16.66%; }
+            .col-s-3 { width: 25%; }
+            .col-s-4 { width: 33.33%; }
+            .col-s-5 { width: 41.66%; }
+            .col-s-6 { width: 50%; }
+            .col-s-7 { width: 58.33%; }
+            .col-s-8 { width: 66.66%; }
+            .col-s-9 { width: 75%; }
+            .col-s-10 { width: 83.33%; }
+            .col-s-11 { width: 91.66%; }
+            .col-s-12 { width: 100%; }
+        }
+
+        @media only screen and (min-width: 768px)
+        {
+            .col-1 { width: 8.33%; }
+            .col-2 { width: 16.66%; }
+            .col-3 { width: 25%; }
+            .col-4 { width: 33.33%; }
+            .col-5 { width: 41.66%; }
+            .col-6 { width: 50%; }
+            .col-7 { width: 58.33%; }
+            .col-8 { width: 66.66%; }
+            .col-9 { width: 75%; }
+            .col-10 { width: 83.33%; }
+            .col-11 { width: 91.66%; }
+            .col-12 { width: 100%; }
+        }
+    </style>
+
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.regions.min.js"></script>
+</head>
+
+<body>
+    <div class="header" style="text-align: center">
+        <h2>INDIAN LANGUAGE IDENTIFICATION</h2>
+        <h4>AIH19T-0161</h4>
+    </div>
+
+    <div class="flex-container">
+        <div id="hindi"><span>Hindi</span></div>
+        <div id="telugu"><span>Telugu</span></div>
+        <div id="tamil"><span>Tamil</span></div>
+        <div id="marathi"><span>Marathi</span></div>
+        <div id="gujarati"><span>Gujarati</span></div>
+    </div>
+
+    <div class="col-6 col-s-9" id="b_ody">
+        <div class="i_form" {% if loaded %}style="height=600px;" {% endif %}>
+
+            <hr> <h2>OFFLINE</h2> <hr>
+
+            <form method="post" action="/" enctype="multipart/form-data">
+                <p>
+                    <input id="urlg" type="text" name="linku" style="display:none">
+                    <label class="btn" for="input">Browse</label>
+                    <input id="input" type="file" name="file" style="display:none" accept="audio/*" required>
+                    <!-- <audio id="sound" controls></audio>-->
+                </p>
+
+                <p>
+                    <input class="button button2" type="submit" value="Submit">
+                </p>
+            </form>
+
+            <audio id="sound" controls></audio>
+            <br>
+
+            {% if loaded %}
+
+            <div class="outer">
+                <div id="mark">
+                </div>
+                
+                <h6> Predicted Language Visualisation </h6><br>
+                <!-- <div id="waveform"> <progress id="progress" value="0" max="100"></progress> </div>
+                <div style="text-align: center">
+                    <button id="play-pause" data-action="play"> Play/Pause </button>
+                </div>-->
+
+                <div id="values">
+                </div>
+            </div>
+
+            {% endif %}
+
+        </div>
+
+        <div class="i_form">
+
+            <hr><h2>ONLINE (DEMO 1)</h2><hr>
+
+            <div id="controls">
+                <button id="recordButton">Record</button>
+                 <button id="pauseButton" disabled>Stop</button>
+            </div>
+
+            <div id="formats">STATUS</div><br>
+
+            <div id="mark2">
+            </div>
+
+            <!--
+            <form action="/server" method="POST">
+
+                <p>
+                    <input class="button button2" type="submit" value="Start">
+                </p>
+
+            </form>-->
+
+        </div>
+
+        <div class="i_form">
+
+            <hr><h2>ONLINE (DEMO 2)</h2><hr>
+
+            <div id="controls">
+                <button id="recordButton_2">Record</button>
+                <button id="stopButton_2">Stop</button>
+            </div>
+
+            <div id="formats_2">STATUS</div>
+
+            <div id="mark2_2">
+            </div>
+
+            <!--
+            <form action="/server" method="POST">
+
+                <p>
+                    <input class="button button2" type="submit" value="Start">
+                </p>
+
+            </form>-->
+        </div>
+
+        <!--
+        <div class="col-3 col-s-3 menu" style="text-align: center;">
+            <h2>Creators</h2>
+            <ul>
+                <li>Nandha</li>
+                <li>Dheeraj</li>
+                <li>Gowtham</li>
+                <li>Karthik</li>
+                <li>Ketan</li>
+            </ul>
+        </div>
+
+    <div class="footer">
+        <p>For queries contact cs17b028@iittp.ac.in or cs17b021@iittp.ac.in.</p>
+    </div>-->
+    </div>
+
+    <script>
+
+        var x = document.getElementById("input");
+        x.onchange = function ()
+        {
+            x.src = URL.createObjectURL(this.files[0]);
+            console.log(x.src);
+            document.querySelector("#sound").setAttribute("src", x.src);
+            var k = document.getElementById("urlg");
+            k.value = x.src;
+        }
+
+        {% if loaded %}
+
+        var i = 0;
+        var frames_array = []
+
+        {% for element in answers %}
+
+        frames_array[i] = {{ element }}
+        i++;
+
+        {% endfor %}
+
+        var frames = frames_array.length + 3;
+        var length = ((document.getElementById("values").clientWidth) * (0.95)  / frames);
+        var i = 0;
+        var dict = [];
+
+        dict[0] = 0;
+        dict[1] = 0;
+        dict[2] = 0;
+        dict[3] = 0;
+        dict[4] = 0;
+
+        frames_array.forEach(element => {
+            dict[element] += 1;
+        });
+
+        var max = -1;
+        for (let index = 0; index < 5; index++)
+        {
+            if (dict[index] > max)
+            {
+                max = index;
+            }
+        }
+
+        var prev = "nothing"
+        var lenn = 0;
+        frames_array.forEach(element =>
+        {
+            var node = document.createElement("div");
+            node.style.width = (length).toString() + "px";
+            node.style.height = "50px";
+            node.style.cssFloat = "left";
+            node.style.textDecoration = "None";
+
+            if (i == 0)
+            {
+                node.style.width = (length * 4).toString() + "px";
+            }
+
+            if (element === 0)
+            {
+                node.style.backgroundColor = "#CC3399";
+                if (prev != element)
+                {
+                    node.textContent = "Ta";
+                }
+
+                prev = 0;
+            }
+            else if (element === 1)
+            {
+                node.style.backgroundColor = "#CCFF33";
+                if (prev != element)
+                {
+                    node.textContent = "Gu";
+                }
+
+                prev = 1;
+            }
+            else if (element === 2)
+            {
+                node.style.backgroundColor = "#FF99FF";
+                if (prev != element)
+                {
+                    node.textContent = "Ma";
+                }
+
+                prev = 2;
+            }
+            else if (element === 3)
+            {
+                node.style.backgroundColor = "#FFCC99";
+                if (prev != element)
+                {
+                    node.textContent = "Hi";
+                }
+
+                prev = 3;
+            }
+            else if (element === 4)
+            {
+                node.style.backgroundColor = "#CCCC66";
+                if (prev != element)
+                {
+                    node.textContent = "Te";
+                }
+
+                prev = 4;
+            }
+
+            i++;
+            mark.append(node);
+        });
+
+        /*
+        var nod1 = document.createElement("div");
+        nod1.textContent = max;
+        nod1.style.width = (length).toString() + "px";
+        nod1.style.height = "100px";
+        nod1.style.cssFloat = "left";
+        nod1.style.textDecoration="None";
+        values.append(nod1);
+        */
+
+        /*
+        var wavesurfer = WaveSurfer.create({
+            container: '#waveform',
+            waveColor: 'violet',
+            progressColor: 'purple'
+        });
+
+        var sound = document.getElementById('input');
+        sound.src = URL.createObjectURL(this.files[0]);
+
+        wavesurfer.on('loading', function (percents) {
+        document.getElementById('progress').value = percents;
+        });
+
+        wavesurfer.on('ready', function(){
+            document.getElementById("play-pause").addEventListener("click", function(){
+                wavesurfer.playPause();
+            });
+            document.getElementById('progress').style.display = 'none';
+        });
+
+        wavesurfer.load("{{ newlink }}");
+
+        sound.onend = function(e)
+        {
+            URL.revokeObjectURL(this.src);
+        }
+        */
+
+        document.querySelector("#sound").setAttribute("src", "{{ newlink }}");
+
+        {% endif %}
+
+
+        //webkitURL is deprecated but nevertheless
+        URL = window.URL || window.webkitURL;
+
+        var gumStream;  //stream from getUserMedia()
+        var rec;        //Recorder.js object
+        var input;      //MediaStreamAudioSourceNode we'll be recording
+
+        // shim for AudioContext when it's not avb.
+        var AudioContext = window.AudioContext || window.webkitAudioContext;
+        var audioContext //audio context to help us record
+
+        var recordButton = document.getElementById("recordButton");
+        //var stopButton = document.getElementById("stopButton");
+
+
+        //add events to those 2 buttons
+        recordButton.addEventListener("click", startRecording);
+        //stopButton.addEventListener("click", stopRecording);
+        recordButton_2.addEventListener("click", startRecording_2);
+        stopButton_2.addEventListener("click", medium_2);
+        function startRecording()
+        {
+            console.log("recordButton clicked");
+
+            var constraints = { audio: true, video: false }
+
+            recordButton.disabled = true;
+            //stopButton.disabled = false;
+
+            navigator.mediaDevices.getUserMedia(constraints).then(function (stream)
+            {
+                console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
+
+                audioContext = new AudioContext();
+
+                document.getElementById("formats").innerHTML = "Recording : channel 1 pcm @ " + audioContext.sampleRate / 1000 + "kHz"
+
+                gumStream = stream;
+
+                input = audioContext.createMediaStreamSource(stream);
+
+                rec = new Recorder(input, { numChannels: 1 })
+
+                rec.record()
+                console.log("before loop");
+                var i = 1;
+                (function myLoop(i)
+                 {
+                    setTimeout(function ()
+                    {
+                        medium();
+                        console.log("iterating ... ");
+                        //    startRecording();          //  your code here
+                        if (--i) myLoop(i);      //  decrement i and call myLoop again if i > 0
+                    }, 5000)
+                })(10);
+
+                myLoop(10);
+
+                console.log("Recording started");
+
+            }).catch(function (err) {
+                recordButton.disabled = false;
+            //    stopButton.disabled = true;
+
+            });
+        }
+
+        function startRecording_2()
+        {
+            console.log("recordButton clicked");
+
+            var constraints = { audio: true, video: false }
+
+            recordButton_2.disabled = true;
+            //stopButton.disabled = false;
+
+            navigator.mediaDevices.getUserMedia(constraints).then(function (stream)
+            {
+                console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
+
+                audioContext = new AudioContext();
+                document.getElementById("formats_2").innerHTML = "Recording : channel 1 pcm @ " + audioContext.sampleRate / 1000 + "kHz"
+                gumStream = stream;
+
+                input = audioContext.createMediaStreamSource(stream);
+                rec = new Recorder(input, { numChannels: 1 })
+
+                rec.record()
+                console.log("before loop");
+                console.log("Recording started");
+
+            }).catch(function (err) {
+                recordButton.disabled = false;
+                //stopButton.disabled = true;
+            });
+        }
+
+        /*function pauseRecording()
+        {
+            console.log("pauseButton clicked rec.recording=", rec.recording);
+            if (rec.recording)
+            {
+                rec.stop();
+                pauseButton.innerHTML = "Resume";
+            }
+            else
+            {
+                rec.record()
+                pauseButton.innerHTML = "Pause";
+            }
+        }*/
+
+        async function sendData_2(blob)
+        {
+            console.log("Sending Data");
+            // fetch("/test2", {
+            // method: "post",
+            // //body: blob
+            // });
+
+            let response = await fetch("/messages_2", { method: "post", body: blob });
+            let text = await response.text();
+            
+	 if(text == "0"){
+//     var sound = new Audio('audio/0.wav');
+  //   sound.play();
+document.getElementById("formats_2").innerHTML = "        நீங்கள் இப்போது தமிழ் பேசுகிறீர்கள்         ";
+    }else if(text == "1"){
+       // var sound = new Audio('audio/1.wav');
+     //sound.play();
+document.getElementById("formats_2").innerHTML = "           તમે હવે ગુજારાતિ બોલી રહ્યા છો             ";
+
+}else if(text == "2"){   
+	// var sound = new Audio('audio/2.wav');
+     //sound.play();
+document.getElementById("formats_2").innerHTML = "           तुम्ही आता मराठी बोलत आहात              ";
+    }else if(text == "3"){
+      //  var sound = new Audio('audio/3.wav');
+    // sound.play();
+document.getElementById("formats_2").innerHTML = "         अब आप हिंदी बोल रहे हैं            ";
+    }else if(text == "4"){
+      //  var sound = new Audio('audio/4.wav');
+     //sound.play();
+document.getElementById("formats_2").innerHTML = "        మీరు ఇప్పుడు తెలుగు మాట్లాడుతున్నారు              ";
+    }
+            console.log(text);
+        }
+
+        async function sendData(blob)
+        {
+            // sends data to flask url /messages as a post with data blob - in format for wav file, hopefully. it is a promise
+            console.log("Sending Data");
+            // fetch("/test", {
+            // method: "post",
+            // //body: blob
+            // });
+
+            let response = await fetch("/messages", { method: "post", body: blob });
+            let text = await response.text();
+            console.log(text);
+            var length_ar = text.length;
+            var frames_array = []
+
+            for (let index = 0; index < length_ar; index++)
+            {
+                frames_array[index] = text[index];
+            }
+
+            var length = ((document.getElementById("mark2").clientWidth) * (0.04) / length_ar);
+            var i = 0;
+            var prev = "nothing"
+            var lenn = 0;
+
+            frames_array.forEach(element => {
+                var node = document.createElement("div");
+                node.style.width = (length).toString() + "px";
+                node.style.height = "50px";
+                node.style.cssFloat = "left";
+                node.style.textDecoration = "None";
+                node.style.display = "inline-block";
+
+                if (i == 0)
+                {
+                    node.style.width = (length * 4).toString() + "px";
+                }
+                if (element == 0)
+                {
+                    node.style.backgroundColor = "#CC3399";
+                    if (prev != element)
+                    {
+                        node.textContent = "Ta";
+                    }
+
+                    prev = 0;
+
+                }
+                else if (element == 1)
+                {
+                    node.style.backgroundColor = "#CCFF33";
+                    if (prev != element)
+                    {
+                        node.textContent = "Gu";
+                    }
+
+                    prev = 1;
+                }
+                else if (element == 2)
+                {
+                    node.style.backgroundColor = "#FF99FF";
+                    if (prev != element)
+                    {
+                        node.textContent = "Ma";
+                    }
+
+                    prev = 2;
+                }
+                else if (element == 3)
+                {
+                    node.style.backgroundColor = "#FFCC99";
+                    if (prev != element)
+                    {
+                        node.textContent = "Hi";
+                    }
+
+                    prev = 3;
+                }
+                else if (element == 4)
+                {
+                    node.style.backgroundColor = "#CCCC66";
+                    if (prev != element)
+                    {
+                        node.textContent = "Te";
+                    }
+
+                    prev = 4;
+                }
+
+                i++;
+                mark2.append(node);
+            });
+
+            console.log(frames_array);
+            //document.getElementById("marky").innerHTML = text;
+            // console.log(typeof val);
+        }
+
+        function stopRecording()
+        {       
+            console.log("stopButton clicked");
+
+            //stopButton.disabled = true;
+            recordButton.disabled = false;
+            rec.stop();
+
+            //stop microphone access
+            // gumStream.getAudioTracks()[0].stop();
+            //create the wav blob and pass it on to createDownloadLink
+            // rec.exportWAV(createDownloadLink);
+        }
+
+        function medium_2()
+        {
+            console.log("stopButton clicked");
+            document.getElementById("formats_2").innerHTML = "Audio Saved Successfully"
+
+            //stopButton.disabled = true;
+            recordButton_2.disabled = false;
+            rec.stop();
+            console.log("iteration ...");
+            rec.exportWAV(createDownloadLink_2);
+        }
+
+        function medium()
+        {
+            console.log("iteration ...");
+            rec.exportWAV(createDownloadLink);
+        }
+        
+        function createDownloadLink_2(blob)
+        {
+            console.log("creating download");
+            sendData_2(blob);
+        }
+        
+        function createDownloadLink(blob)
+        {
+            console.log("creating download");
+            sendData(blob);
+            /*var url = URL.createObjectURL(blob);
+            var au = document.createElement('audio');
+            var li = document.createElement('li');
+            var link = document.createElement('a');
+
+            //name of .wav file to use during upload and download (without extendion)
+            var filename = new Date().toISOString();
+
+            //add controls to the <audio> element
+            au.controls = true;
+            au.src = url;
+
+            //save to disk link
+            link.href = url;
+            link.download = filename + ".wav"; //download forces the browser to donwload the file using the  filename
+            link.innerHTML = "Save to disk";
+
+            //add the new audio element to li
+            li.appendChild(au);
+
+            //add the filename to the li
+            li.appendChild(document.createTextNode(filename + ".wav "))
+
+            //add the save to disk link to li
+            li.appendChild(link);
+
+            //upload link
+            var upload = document.createElement('a');
+            upload.href = "#";
+            upload.innerHTML = "Upload";
+            upload.addEventListener("click", function (event)
+            {
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function (e)
+                {
+                    if (this.readyState === 4)
+                    {
+                        console.log("Server returned: ", e.target.responseText);
+                    }
+                };
+
+                var fd = new FormData();
+                fd.append("audio_data", blob, filename);
+                xhr.open("POST", "upload.php", true);
+                xhr.send(fd);
+            });
+
+            li.appendChild(document.createTextNode(" "));//add a space in between
+            li.appendChild(upload); //add the upload link to li*/
+        }
+
+    </script>
+</body>
+
+</html>
+

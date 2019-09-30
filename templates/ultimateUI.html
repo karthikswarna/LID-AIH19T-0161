@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+
+        <style>
+
+            .class{
+                text-align: center;
+
+            }
+
+            #mark{
+              margin:auto;
+              margin-top:200px;
+
+              width: 95%;
+
+
+            }
+            @media only screen and (min-width: 600px) {
+              /* For tablets: */
+              .col-s-1 {width: 8.33%;}
+              .col-s-2 {width: 16.66%;}
+              .col-s-3 {width: 25%;}
+              .col-s-4 {width: 33.33%;}
+              .col-s-5 {width: 41.66%;}
+              .col-s-6 {width: 50%;}
+              .col-s-7 {width: 58.33%;}
+              .col-s-8 {width: 66.66%;}
+              .col-s-9 {width: 75%;}
+              .col-s-10 {width: 83.33%;}
+              .col-s-11 {width: 91.66%;}
+              .col-s-12 {width: 100%;}
+            }
+            @media only screen and (min-width: 768px) {
+              /* For desktop: */
+              .col-1 {width: 8.33%;}
+              .col-2 {width: 16.66%;}
+              .col-3 {width: 25%;}
+              .col-4 {width: 33.33%;}
+              .col-5 {width: 41.66%;}
+              .col-6 {width: 50%;}
+              .col-7 {width: 58.33%;}
+              .col-8 {width: 66.66%;}
+              .col-9 {width: 75%;}
+              .col-10 {width: 83.33%;}
+              .col-11 {width: 91.66%;}
+              .col-12 {width: 100%;}
+            }
+
+            </style>
+
+            <script src="https://unpkg.com/wavesurfer.js"></script>
+
+    </head>
+
+    <body>
+
+    <div class="outer">
+        <div id="mark">
+        </div>
+
+        <div id="waveform"> <progress id="progress" value="0" max="100"></progress> </div>
+        <div style="text-align: center">
+            <button id="play-pause" data-action="play"> Play/Pause </button>
+        </div>
+
+        <div id = "values">
+        </div>
+    </div>
+
+    <script>
+
+        var i = 0;
+        var frames_array = []
+
+        {% for element in answers %}
+            frames_array[i] = {{ element }}
+            i++;
+        {% endfor %}
+
+            var frames = frames_array.length+3;
+            var length = Math.round((window.innerWidth)*(0.9)/frames);
+            var i = 0;
+            var dict = [];
+
+            var path = "{{apath}}"
+
+            console.log(path);
+            var wavesurfer = WaveSurfer.create({
+                container: '#waveform',
+                waveColor: 'violet',
+                progressColor: 'purple'
+            });
+
+            wavesurfer.on('loading', function (percents) {
+            document.getElementById('progress').value = percents;
+            });
+
+            wavesurfer.on('ready', function(){
+                document.getElementById("play-pause").addEventListener("click", function(){
+                    wavesurfer.playPause();
+                });
+                document.getElementById('progress').style.display = 'none';
+            });
+
+            wavesurfer.load(path);
+
+            dict[0] = 0;
+            dict[1] = 0;
+            dict[2] = 0;
+            dict[3] = 0;
+            dict[4] = 0;
+
+            frames_array.forEach(element => {
+
+                dict[element]+=1;
+
+            });
+            var max = -1;
+
+            for (let index = 0; index < 5; index++) {
+
+                if(dict[index]>max){
+                    max = index;
+                }
+            }
+
+        var prev = "nothing"
+            var lenn = 0;
+            frames_array.forEach(element => {
+
+                var node = document.createElement("div");
+                    node.style.width = (length).toString() + "px";
+                    node.style.height = "100px";
+                    node.style.cssFloat = "left";
+                    node.style.textDecoration="None";
+                if(i==0){
+                    node.style.width = (length*4).toString() + "px";
+                }
+                if(element === 0){
+                    node.style.backgroundColor = "#CC3399";
+                    if(prev!=element){
+
+                        node.textContent = "Ta";
+                    }
+                    prev=0;
+
+                }else if(element===1){
+        node.style.backgroundColor = "#CCFF33";
+                    if(prev!=element){
+                        node.textContent = "Gu";
+                    }
+
+                    prev=1;
+                }else if(element===2){
+                    node.style.backgroundColor = "#FF99FF";
+                    if(prev!=element){
+                        node.textContent = "Ma";
+                    }
+
+                    prev=2;
+                }else if(element===3){
+                    node.style.backgroundColor = "#FFCC99";
+                    if(prev!=element){
+                        node.textContent = "Hi";
+                    }
+
+                    prev=3;
+                }else if(element===4){
+        node.style.backgroundColor = "#CCCC66";
+                    if(prev!=element){
+                        node.textContent = "Te";
+                    }
+
+                    prev=4;
+                }
+
+
+
+                i++;
+                mark.append(node);
+            });
+
+            var nod1 = document.createElement("div");
+            nod1.textContent = max;
+                    nod1.style.width = (length).toString() + "px";
+                    nod1.style.height = "100px";
+                    nod1.style.cssFloat = "left";
+                    nod1.style.textDecoration="None";
+
+        values.append(nod1);
+
+        </script>
+
+    </body>
+</html>
+
+
